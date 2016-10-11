@@ -1,0 +1,2 @@
+# MTJSocketClient
+便于cocos2dx客户端使用的tcp连接，test例子在main中

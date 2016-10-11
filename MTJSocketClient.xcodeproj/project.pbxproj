@@ -1,0 +1,343 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F05D0F9F1DAB8D6F00BD8F1C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F05D0F9E1DAB8D6F00BD8F1C /* main.cpp */; };
+		F05D0FAA1DAB91B800BD8F1C /* MTJSocketMutext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F05D0FA81DAB91B800BD8F1C /* MTJSocketMutext.cpp */; };
+		F05D0FAD1DAB93E600BD8F1C /* ThreadHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F05D0FAB1DAB93E600BD8F1C /* ThreadHelper.cpp */; };
+		F05D0FB01DAB970900BD8F1C /* MTJSocketBits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F05D0FAE1DAB970900BD8F1C /* MTJSocketBits.cpp */; };
+		F05D0FB61DABA0C400BD8F1C /* MTJSocketBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F05D0FB41DABA0C400BD8F1C /* MTJSocketBuffer.cpp */; };
+		F06EE3931DACBF4B00CA80A5 /* MTJSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F06EE3911DACBF4B00CA80A5 /* MTJSocket.cpp */; };
+		F06EE3961DACBF6800CA80A5 /* MTJSocketListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F06EE3941DACBF6800CA80A5 /* MTJSocketListener.cpp */; };
+		F06EE3991DACBFAB00CA80A5 /* MTJSocketThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F06EE3971DACBFAB00CA80A5 /* MTJSocketThread.cpp */; };
+		F06EE39C1DACCE1600CA80A5 /* MTJSocketDataFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F06EE39A1DACCE1600CA80A5 /* MTJSocketDataFrame.cpp */; };
+		F06EE3A01DACE32300CA80A5 /* DefaultListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F06EE39E1DACE32300CA80A5 /* DefaultListener.cpp */; };
+		F06EE3A31DACEF0B00CA80A5 /* DefaultLVProtocal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F06EE3A11DACEF0B00CA80A5 /* DefaultLVProtocal.cpp */; };
+		F06EE3A61DACF12700CA80A5 /* MTJSocketWorkThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F06EE3A41DACF12700CA80A5 /* MTJSocketWorkThread.cpp */; };
+		F06EE3A91DACF2CC00CA80A5 /* MTJSocketThreadPool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F06EE3A71DACF2CC00CA80A5 /* MTJSocketThreadPool.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F05D0F991DAB8D6F00BD8F1C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F05D0F9B1DAB8D6F00BD8F1C /* MTJSocketClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MTJSocketClient; sourceTree = BUILT_PRODUCTS_DIR; };
+		F05D0F9E1DAB8D6F00BD8F1C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		F05D0FA61DAB8E9400BD8F1C /* MTJSocketPlatformConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTJSocketPlatformConfig.h; sourceTree = "<group>"; };
+		F05D0FA71DAB918D00BD8F1C /* MTJSocketAutoLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTJSocketAutoLock.h; sourceTree = "<group>"; };
+		F05D0FA81DAB91B800BD8F1C /* MTJSocketMutext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MTJSocketMutext.cpp; sourceTree = "<group>"; };
+		F05D0FA91DAB91B800BD8F1C /* MTJSocketMutext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTJSocketMutext.h; sourceTree = "<group>"; };
+		F05D0FAB1DAB93E600BD8F1C /* ThreadHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ThreadHelper.cpp; path = "../../../../cocos2d-x-2.2.1/projects/FishJoy_leTangXiongDa_轨迹设计/Classes/ThreadHelper.cpp"; sourceTree = "<group>"; };
+		F05D0FAC1DAB93E600BD8F1C /* ThreadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThreadHelper.h; path = "../../../../cocos2d-x-2.2.1/projects/FishJoy_leTangXiongDa_轨迹设计/Classes/ThreadHelper.h"; sourceTree = "<group>"; };
+		F05D0FAE1DAB970900BD8F1C /* MTJSocketBits.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MTJSocketBits.cpp; sourceTree = "<group>"; };
+		F05D0FAF1DAB970900BD8F1C /* MTJSocketBits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTJSocketBits.h; sourceTree = "<group>"; };
+		F05D0FB11DAB9BC400BD8F1C /* MTJSocketQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTJSocketQueue.h; sourceTree = "<group>"; };
+		F05D0FB21DAB9C5600BD8F1C /* MTJSocketLinkedQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTJSocketLinkedQueue.h; sourceTree = "<group>"; };
+		F05D0FB31DAB9F8700BD8F1C /* MTJSocketBlockingQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTJSocketBlockingQueue.h; sourceTree = "<group>"; };
+		F05D0FB41DABA0C400BD8F1C /* MTJSocketBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MTJSocketBuffer.cpp; sourceTree = "<group>"; };
+		F05D0FB51DABA0C400BD8F1C /* MTJSocketBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTJSocketBuffer.h; sourceTree = "<group>"; };
+		F06EE3911DACBF4B00CA80A5 /* MTJSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MTJSocket.cpp; sourceTree = "<group>"; };
+		F06EE3921DACBF4B00CA80A5 /* MTJSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTJSocket.h; sourceTree = "<group>"; };
+		F06EE3941DACBF6800CA80A5 /* MTJSocketListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MTJSocketListener.cpp; sourceTree = "<group>"; };
+		F06EE3951DACBF6800CA80A5 /* MTJSocketListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTJSocketListener.h; sourceTree = "<group>"; };
+		F06EE3971DACBFAB00CA80A5 /* MTJSocketThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MTJSocketThread.cpp; sourceTree = "<group>"; };
+		F06EE3981DACBFAB00CA80A5 /* MTJSocketThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTJSocketThread.h; sourceTree = "<group>"; };
+		F06EE39A1DACCE1600CA80A5 /* MTJSocketDataFrame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MTJSocketDataFrame.cpp; sourceTree = "<group>"; };
+		F06EE39B1DACCE1600CA80A5 /* MTJSocketDataFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTJSocketDataFrame.h; sourceTree = "<group>"; };
+		F06EE39D1DACD4AC00CA80A5 /* MTJSocketProtocal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTJSocketProtocal.h; sourceTree = "<group>"; };
+		F06EE39E1DACE32300CA80A5 /* DefaultListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DefaultListener.cpp; sourceTree = "<group>"; };
+		F06EE39F1DACE32300CA80A5 /* DefaultListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultListener.h; sourceTree = "<group>"; };
+		F06EE3A11DACEF0B00CA80A5 /* DefaultLVProtocal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DefaultLVProtocal.cpp; sourceTree = "<group>"; };
+		F06EE3A21DACEF0B00CA80A5 /* DefaultLVProtocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultLVProtocal.h; sourceTree = "<group>"; };
+		F06EE3A41DACF12700CA80A5 /* MTJSocketWorkThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MTJSocketWorkThread.cpp; sourceTree = "<group>"; };
+		F06EE3A51DACF12700CA80A5 /* MTJSocketWorkThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTJSocketWorkThread.h; sourceTree = "<group>"; };
+		F06EE3A71DACF2CC00CA80A5 /* MTJSocketThreadPool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MTJSocketThreadPool.cpp; sourceTree = "<group>"; };
+		F06EE3A81DACF2CC00CA80A5 /* MTJSocketThreadPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTJSocketThreadPool.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F05D0F981DAB8D6F00BD8F1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F05D0F921DAB8D6F00BD8F1C = {
+			isa = PBXGroup;
+			children = (
+				F05D0F9D1DAB8D6F00BD8F1C /* MTJSocketClient */,
+				F05D0F9C1DAB8D6F00BD8F1C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F05D0F9C1DAB8D6F00BD8F1C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F05D0F9B1DAB8D6F00BD8F1C /* MTJSocketClient */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F05D0F9D1DAB8D6F00BD8F1C /* MTJSocketClient */ = {
+			isa = PBXGroup;
+			children = (
+				F05D0FA51DAB8E0500BD8F1C /* Src */,
+				F05D0F9E1DAB8D6F00BD8F1C /* main.cpp */,
+			);
+			path = MTJSocketClient;
+			sourceTree = "<group>";
+		};
+		F05D0FA51DAB8E0500BD8F1C /* Src */ = {
+			isa = PBXGroup;
+			children = (
+				F05D0FAB1DAB93E600BD8F1C /* ThreadHelper.cpp */,
+				F05D0FAC1DAB93E600BD8F1C /* ThreadHelper.h */,
+				F05D0FA61DAB8E9400BD8F1C /* MTJSocketPlatformConfig.h */,
+				F05D0FA71DAB918D00BD8F1C /* MTJSocketAutoLock.h */,
+				F05D0FA81DAB91B800BD8F1C /* MTJSocketMutext.cpp */,
+				F05D0FA91DAB91B800BD8F1C /* MTJSocketMutext.h */,
+				F05D0FAE1DAB970900BD8F1C /* MTJSocketBits.cpp */,
+				F05D0FAF1DAB970900BD8F1C /* MTJSocketBits.h */,
+				F05D0FB11DAB9BC400BD8F1C /* MTJSocketQueue.h */,
+				F05D0FB21DAB9C5600BD8F1C /* MTJSocketLinkedQueue.h */,
+				F05D0FB31DAB9F8700BD8F1C /* MTJSocketBlockingQueue.h */,
+				F05D0FB41DABA0C400BD8F1C /* MTJSocketBuffer.cpp */,
+				F05D0FB51DABA0C400BD8F1C /* MTJSocketBuffer.h */,
+				F06EE3911DACBF4B00CA80A5 /* MTJSocket.cpp */,
+				F06EE3921DACBF4B00CA80A5 /* MTJSocket.h */,
+				F06EE3941DACBF6800CA80A5 /* MTJSocketListener.cpp */,
+				F06EE3951DACBF6800CA80A5 /* MTJSocketListener.h */,
+				F06EE3971DACBFAB00CA80A5 /* MTJSocketThread.cpp */,
+				F06EE3981DACBFAB00CA80A5 /* MTJSocketThread.h */,
+				F06EE39A1DACCE1600CA80A5 /* MTJSocketDataFrame.cpp */,
+				F06EE39B1DACCE1600CA80A5 /* MTJSocketDataFrame.h */,
+				F06EE39D1DACD4AC00CA80A5 /* MTJSocketProtocal.h */,
+				F06EE39E1DACE32300CA80A5 /* DefaultListener.cpp */,
+				F06EE39F1DACE32300CA80A5 /* DefaultListener.h */,
+				F06EE3A11DACEF0B00CA80A5 /* DefaultLVProtocal.cpp */,
+				F06EE3A21DACEF0B00CA80A5 /* DefaultLVProtocal.h */,
+				F06EE3A41DACF12700CA80A5 /* MTJSocketWorkThread.cpp */,
+				F06EE3A51DACF12700CA80A5 /* MTJSocketWorkThread.h */,
+				F06EE3A71DACF2CC00CA80A5 /* MTJSocketThreadPool.cpp */,
+				F06EE3A81DACF2CC00CA80A5 /* MTJSocketThreadPool.h */,
+			);
+			path = Src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F05D0F9A1DAB8D6F00BD8F1C /* MTJSocketClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F05D0FA21DAB8D6F00BD8F1C /* Build configuration list for PBXNativeTarget "MTJSocketClient" */;
+			buildPhases = (
+				F05D0F971DAB8D6F00BD8F1C /* Sources */,
+				F05D0F981DAB8D6F00BD8F1C /* Frameworks */,
+				F05D0F991DAB8D6F00BD8F1C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MTJSocketClient;
+			productName = MTJSocketClient;
+			productReference = F05D0F9B1DAB8D6F00BD8F1C /* MTJSocketClient */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F05D0F931DAB8D6F00BD8F1C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = mingtingjian;
+				TargetAttributes = {
+					F05D0F9A1DAB8D6F00BD8F1C = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
+			};
+			buildConfigurationList = F05D0F961DAB8D6F00BD8F1C /* Build configuration list for PBXProject "MTJSocketClient" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F05D0F921DAB8D6F00BD8F1C;
+			productRefGroup = F05D0F9C1DAB8D6F00BD8F1C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F05D0F9A1DAB8D6F00BD8F1C /* MTJSocketClient */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F05D0F971DAB8D6F00BD8F1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F06EE3991DACBFAB00CA80A5 /* MTJSocketThread.cpp in Sources */,
+				F05D0FB61DABA0C400BD8F1C /* MTJSocketBuffer.cpp in Sources */,
+				F05D0FB01DAB970900BD8F1C /* MTJSocketBits.cpp in Sources */,
+				F06EE3931DACBF4B00CA80A5 /* MTJSocket.cpp in Sources */,
+				F05D0FAD1DAB93E600BD8F1C /* ThreadHelper.cpp in Sources */,
+				F06EE3A31DACEF0B00CA80A5 /* DefaultLVProtocal.cpp in Sources */,
+				F06EE3A01DACE32300CA80A5 /* DefaultListener.cpp in Sources */,
+				F06EE3961DACBF6800CA80A5 /* MTJSocketListener.cpp in Sources */,
+				F05D0F9F1DAB8D6F00BD8F1C /* main.cpp in Sources */,
+				F06EE39C1DACCE1600CA80A5 /* MTJSocketDataFrame.cpp in Sources */,
+				F05D0FAA1DAB91B800BD8F1C /* MTJSocketMutext.cpp in Sources */,
+				F06EE3A61DACF12700CA80A5 /* MTJSocketWorkThread.cpp in Sources */,
+				F06EE3A91DACF2CC00CA80A5 /* MTJSocketThreadPool.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F05D0FA01DAB8D6F00BD8F1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F05D0FA11DAB8D6F00BD8F1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F05D0FA31DAB8D6F00BD8F1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					TARGET_OS_MAC,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F05D0FA41DAB8D6F00BD8F1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=0",
+					TARGET_OS_MAC,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F05D0F961DAB8D6F00BD8F1C /* Build configuration list for PBXProject "MTJSocketClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F05D0FA01DAB8D6F00BD8F1C /* Debug */,
+				F05D0FA11DAB8D6F00BD8F1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F05D0FA21DAB8D6F00BD8F1C /* Build configuration list for PBXNativeTarget "MTJSocketClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F05D0FA31DAB8D6F00BD8F1C /* Debug */,
+				F05D0FA41DAB8D6F00BD8F1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F05D0F931DAB8D6F00BD8F1C /* Project object */;
+}
