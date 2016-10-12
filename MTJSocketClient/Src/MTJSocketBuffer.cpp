@@ -7,10 +7,12 @@
 //
 
 #include "MTJSocketBuffer.h"
+#include "MTJSocketPlatformConfig.h"
 #include <stdio.h>
 #include <math.h>
 #include <iostream>
 #include <string.h>
+
 
 MTJSocketBuffer::MTJSocketBuffer(int nLen){
 
@@ -24,7 +26,7 @@ MTJSocketBuffer::MTJSocketBuffer(int nLen){
 
 MTJSocketBuffer::~MTJSocketBuffer(){
 
-    free(m_pData);
+    MTJ_SAFE_FREE(m_pData);
 }
 
 int MTJSocketBuffer::Capacity(){
@@ -38,7 +40,7 @@ MTJSocketBuffer* MTJSocketBuffer::Capacity(int nNewCapacity){
         char* old = m_pData;
         m_pData = (char*) malloc(nNewCapacity);
         memcpy(m_pData, old, m_nLen);
-        free(old);
+        MTJ_SAFE_FREE(old);
         m_nLen = nNewCapacity;
     }
     

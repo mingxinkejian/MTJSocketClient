@@ -44,7 +44,7 @@ private:
      *  @param bDetached
      *  @param bScope
      *
-     *  @return <#return value description#>
+     *  @return return value description
      */
     int Create(ThreadFunc pFunc,void* pContext,bool bDetached = false,bool bScope = false);
     /**

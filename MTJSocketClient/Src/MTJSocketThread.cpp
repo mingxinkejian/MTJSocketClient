@@ -118,8 +118,8 @@ void MTJSocketThread::End(){
         sem_close(m_pSem);
 #else
         sem_destroy(m_pSem);
-#endif
         delete m_pSem;
+#endif
         m_pSem = NULL;
     }
 }

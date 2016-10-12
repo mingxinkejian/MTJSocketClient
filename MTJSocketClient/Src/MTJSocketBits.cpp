@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "MTJSocketBits.h"
+#include "MTJSocketPlatformConfig.h"
 
 MTJSocketBits::MTJSocketBits(int nSize){
 
@@ -20,7 +21,7 @@ MTJSocketBits::MTJSocketBits(int nSize){
 
 MTJSocketBits::~MTJSocketBits(){
 
-    free(m_pBits);
+    MTJ_SAFE_FREE(m_pBits);
 }
 
 int MTJSocketBits::getBit(int nIndex){
@@ -70,7 +71,7 @@ void MTJSocketBits::setBit(int nIndex, int nValue){
         char* temp = (char*) malloc(bs);
         memset(temp, 0, bs);
         memcpy(temp, m_pBits, m_nSize / 8);
-        free(m_pBits);
+        MTJ_SAFE_FREE(m_pBits);
         m_pBits = temp;
         m_nSize = bs * 8;
     }

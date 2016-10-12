@@ -11,6 +11,7 @@
 
 #include <stdlib.h>
 #include "MTJSocketQueue.h"
+#include "MTJSocketPlatformConfig.h"
 
 struct MTJSocketLinkedNode {
     void* data;
@@ -31,9 +32,10 @@ public:
         MTJSocketLinkedNode* p = m_pHead;
         while (p != NULL) {
             delete ((T*) p->data);
+            p->data = NULL;
             MTJSocketLinkedNode* t = p;
             p = p->next;
-            free(t);
+            MTJ_SAFE_FREE(t);
         }
     }
     
@@ -68,7 +70,7 @@ public:
             if (m_pHead == NULL) {
                 m_pTail = NULL;
             }
-            free(hp);
+            MTJ_SAFE_FREE(hp);
             m_nSize--;
             return t;
         }

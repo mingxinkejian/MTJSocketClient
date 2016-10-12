@@ -43,12 +43,24 @@ void MTJSocketListener::SetContext(MTJSocket *pSock){
 }
 
 void MTJSocketListener::Run(){
+    
+    //处理tcp和udp的
+    if (m_pContext->GetSocketType() == MTJSocket::SOCK_TCP || m_pContext->GetSocketType() == MTJSocket::SOCK_TCP6) {
+        RecvTCPMessage();
+    }else if(m_pContext->GetSocketType() == MTJSocket::SOCK_UDP || m_pContext->GetSocketType() == MTJSocket::SOCK_UDP6){
+        RecvUDPMessage();
+    }
 
+}
+
+void MTJSocketListener::RecvTCPMessage(){
+    
     MTJSocketBuffer* buffer = new MTJSocketBuffer(SOCKET_SIZE);
     int size = 0;
     int sockId = m_pContext->GetSocketId();
     while (true) {
         size = (int)recv(sockId, buffer->GetData(), SOCKET_SIZE, 0);
+
         if (size > 0) {
             buffer->ReaderIndex(0);
             buffer->WriterIndex(size);
@@ -64,6 +76,33 @@ void MTJSocketListener::Run(){
             break;
         }
     }
-    delete buffer;
+    MTJ_SAFE_DELETE(buffer);
+    OnClose(m_pContext, true);
+}
+void MTJSocketListener::RecvUDPMessage(){
+    //UDP包都为一个完整包
+    MTJSocketBuffer* buffer = new MTJSocketBuffer(SOCKET_UDP_SIZE);
+    int sockId = m_pContext->GetSocketId();
+    int ret = 0;
+    while (true) {
+        ret = (int)recvfrom(sockId, buffer->GetData(), SOCKET_UDP_SIZE, 0, (struct sockaddr*)&m_pContext->m_sSockAddr.addr, &m_pContext->m_sSockAddr.len);
+        
+        if (ret > 0) {
+            const MTJSocketBuffer* frame = buffer->Copy();
+            OnMessage(m_pContext, (MTJSocketBuffer*)frame);
+        }else if(ret == 0){
+            
+        }else{
+            if (errno == EINTR) {
+                ret = (int)recvfrom(sockId, buffer->GetData(), SOCKET_UDP_SIZE, 0, (struct sockaddr*)&m_pContext->m_sSockAddr, &m_pContext->m_sSockAddr.len);
+                
+                const MTJSocketBuffer* frame = buffer->Copy();
+                OnMessage(m_pContext, (MTJSocketBuffer*)frame);
+            }else{
+                break;
+            }
+        }
+    }
+    MTJ_SAFE_DELETE(buffer);
     OnClose(m_pContext, true);
 }

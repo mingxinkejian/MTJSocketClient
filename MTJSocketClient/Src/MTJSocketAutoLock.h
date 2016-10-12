@@ -11,17 +11,17 @@
 
 #include "MTJSocketMutext.h"
 
-class MTJAutoLock {
+class MTJSocketAutoLock {
 private:
     MTJSocketMutext* m_pLock;
     
 public:
-    MTJAutoLock(MTJSocketMutext *pMutext){
+    MTJSocketAutoLock(MTJSocketMutext *pMutext){
         m_pLock = pMutext;
         m_pLock->Lock();
     }
     
-    ~MTJSocketMutext(){
+    ~MTJSocketAutoLock(){
         m_pLock->Unlock();
     }
 };

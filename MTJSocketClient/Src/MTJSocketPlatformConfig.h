@@ -54,5 +54,7 @@
 #pragma warning (disable:4127)
 #endif  // CC_PLATFORM_WIN32
 
-
+#define MTJ_SAFE_DELETE(p)              do { if(p) { delete (p); (p) = 0; } } while(0)
+#define MTJ_SAFE_DELETE_ARRAY(p)        do { if(p) { delete[] (p); (p) = 0; } } while(0)
+#define MTJ_SAFE_FREE(p)                do { if(p) { free(p); (p) = 0; } } while(0)
 #endif

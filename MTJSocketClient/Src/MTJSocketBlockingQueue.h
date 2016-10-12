@@ -14,6 +14,7 @@
 #include "MTJSocketAutoLock.h"
 #include "MTJSocketLinkedQueue.h"
 
+
 template <class T>
 class MTJSocketBlockingQueue : public MTJSocketLinkedQueue<T> {
 private:
@@ -24,7 +25,7 @@ public:
     }
     
     virtual ~MTJSocketBlockingQueue(){
-        delete m_pLock;
+        MTJ_SAFE_DELETE(m_pLock);
     }
     
     bool Offer(T* pElement){
@@ -44,7 +45,7 @@ public:
     
     int Size(){
         MTJSocketAutoLock lock(m_pLock);
-        return m_nSize;
+        return this->m_nSize;
     }
 };
 

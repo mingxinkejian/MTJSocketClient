@@ -14,7 +14,7 @@
 #include "MTJSocketThread.h"
 
 #define SOCKET_SIZE 1024 * 2
-
+#define SOCKET_UDP_SIZE 1024 * 32
 class MTJSocket;
 class MTJSocketListener : public MTJSocketThread{
 
@@ -35,6 +35,9 @@ public:
      *  用于处理接收服务器发送的消息
      */
     virtual void Run();
+    
+    virtual void RecvTCPMessage();
+    virtual void RecvUDPMessage();
 };
 
 #endif /* defined(__MTJSocketClient__MTJSocketListener__) */

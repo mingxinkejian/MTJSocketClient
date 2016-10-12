@@ -12,11 +12,13 @@
 #include <errno.h>
 
 MTJSocketWorkThread::MTJSocketWorkThread(){
+    
     m_pQueue = new MTJSocketBlockingQueue<MTJSocketThread>;
     Start();
 }
 MTJSocketWorkThread::~MTJSocketWorkThread(){
-    delete m_pQueue;
+    
+    MTJ_SAFE_DELETE(m_pQueue);
 }
 
 void MTJSocketWorkThread::Run(){
@@ -26,7 +28,7 @@ void MTJSocketWorkThread::Run(){
         if (task != NULL) {
             m_nStatus = RUNNING;
             task->Run();
-            delete task;
+            MTJ_SAFE_DELETE(task);
         }else{
             m_nStatus = IDLE;
             sem_wait(m_pSem); //等待添加新的task

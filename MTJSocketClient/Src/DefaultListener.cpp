@@ -25,12 +25,12 @@ DefaultListener::~DefaultListener(){
  *  @param pFrame
  */
 void DefaultListener::OnMessage(MTJSocket* pSock,MTJSocketBuffer* pFrame){
-    pFrame->ReaderIndex(2);
+    pFrame->ReaderIndex(0);
     
-    float c = pFrame->ReadFloat();
     std::string str = pFrame->ReadUTF8();
-    printf("%f %s\n",c,str.c_str());
-    delete pFrame;
+    printf("接收到的数据:%s\n",str.c_str());
+
+    MTJ_SAFE_DELETE(pFrame);
 }
 void DefaultListener::OnClose(MTJSocket* pSock,bool bFromRemote){
     printf("Socket closed\n");
@@ -41,13 +41,13 @@ void DefaultListener::OnIdle(MTJSocket* pSock){
 void DefaultListener::OnOpen(MTJSocket* pSock){
     printf("socket connecting");
     
-    MTJSocketDataFrame* frame = new MTJSocketDataFrame(512);
-    frame->PutFloat(10.1f);
+    MTJSocketDataFrame* frame = new MTJSocketDataFrame(SOCKET_SIZE);
     std::string buff = "测试Socket";
     frame->PutString((char*)buff.c_str());
     frame->End();
     pSock->Send(frame);
-    delete frame;
+    
+    MTJ_SAFE_DELETE(frame);
 }
 void DefaultListener::OnError(MTJSocket* pSock,const char* error){
     printf("Socket connection error :%s\n",error);

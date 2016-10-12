@@ -7,7 +7,7 @@
 //
 
 #include "MTJSocketThreadPool.h"
-
+#include "MTJSocketPlatformConfig.h"
 MTJSocketThreadPool::MTJSocketThreadPool(int nPoolSize):
 m_nPoolSize(nPoolSize),
 m_pPool(NULL)
@@ -27,10 +27,9 @@ MTJSocketThreadPool::~MTJSocketThreadPool(){
             if (NULL == m_pPool[i]) {
                 continue;
             }
-            
-            delete m_pPool[i];
+            MTJ_SAFE_DELETE(m_pPool[i]);
         }
-        delete [] m_pPool;
+        MTJ_SAFE_DELETE_ARRAY(m_pPool);
     }
 }
 
@@ -68,8 +67,7 @@ void MTJSocketThreadPool::Shutdown(){
         m_pPool[i]->SetStatus(MTJSocketThread::QUITED);
         sem_post(m_pPool[i]->GetSem());
         m_pPool[i]->Join();
-        delete m_pPool[i];
-        m_pPool[i] = NULL;
+        MTJ_SAFE_DELETE(m_pPool[i]);
     }
-    delete [] m_pPool;
+    MTJ_SAFE_DELETE_ARRAY(m_pPool);
 }

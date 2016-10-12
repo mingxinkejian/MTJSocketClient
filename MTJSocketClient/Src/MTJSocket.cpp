@@ -7,34 +7,7 @@
 //
 
 #include "MTJSocket.h"
-#include "MTJSocketPlatformConfig.h"
-#include <stdio.h>
-#include <stdlib.h>
 #include <errno.h>
-#include <string.h>
-#include <pthread.h>
-
-#include "MTJSocketBuffer.h"
-#include "MTJSocketListener.h"
-#include "MTJSocketProtocal.h"
-#include "MTJSocketDataFrame.h"
-
-#if TARGET_PLATFORM == PLATFORM_WIN32
-#pragma comment(lib, "wsock32")
-#pragma comment(lib,"ws2_32.lib")
-#include <winsock2.h>
-#else
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netdb.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <arpa/inet.h>
-#define INVALID_SOCKET -1
-#define SOCKET_ERROR -1
-#endif
 
 MTJSocket::MTJSocket():
 m_pIP(NULL),
@@ -45,8 +18,8 @@ m_pProtocal(NULL)
 
 MTJSocket::~MTJSocket(){
 
-    delete m_pProtocal;
-    delete m_pListener;
+    MTJ_SAFE_DELETE(m_pProtocal);
+    MTJ_SAFE_DELETE(m_pListener);
 }
 
 int MTJSocket::GetSocketId(){
@@ -59,12 +32,6 @@ MTJSocketListener* MTJSocket::GetListener(){
     return m_pListener;
 }
 
-void MTJSocket::SetListener(MTJSocketListener *pListener){
-
-    m_pListener = pListener;
-    m_pListener->SetContext(this);
-}
-
 MTJSocketProtocal* MTJSocket::GetProtocal(){
 
     return this->m_pProtocal;
@@ -75,27 +42,113 @@ void MTJSocket::SetProtocal(MTJSocketProtocal *pProtocal){
     m_pProtocal = pProtocal;
 }
 
-void MTJSocket::Open(const char *ip, unsigned int port){
+void MTJSocket::Open(MTJSocketListener *pListener,SocketType eSockType){
 
+    m_pListener = pListener;
+    m_pListener->SetContext(this);
+
+    int domain = -1;
+    int type = -1;
+    
+    switch (eSockType) {
+        case SOCK_TCP:
+            domain = AF_INET;
+            type = SOCK_STREAM;
+            break;
+        case SOCK_TCP6:
+            domain = AF_INET6;
+            type = SOCK_STREAM;
+            break;
+        case SOCK_UDP:
+            domain = AF_INET;
+            type = SOCK_DGRAM;
+            break;
+        case SOCK_UDP6:
+            domain = AF_INET6;
+            type = SOCK_DGRAM;
+            break;
+#if TARGET_PLATFORM != PLATFORM_WIN32
+//windows下不支持此参数，在客户端不建议使用下面两个选项，仅作为支持
+        case SOCK_UNIX_DGRAM:
+            domain = AF_UNIX;
+            type = SOCK_DGRAM;
+            break;
+        case SOCK_UNIX_STREAM:
+            domain = AF_UNIX;
+            type = SOCK_STREAM;
+            break;
+#endif
+        default:
+            domain = AF_INET;
+            type = SOCK_STREAM;
+            break;
+    }
+    m_nDomain = domain;
+    m_nType = type;
+    m_eSockType = eSockType;
+    m_nSsockId = socket(AF_INET, SOCK_STREAM, 0);
+}
+
+void MTJSocket::Connect(const char* ip,unsigned int port,double dTimeout,int nFlag){
+    
     m_pIP = ip;
     m_nPort = port;
-    
-    //创建socket连接
-    if ((m_nSsockId = socket(AF_INET, SOCK_STREAM, 0)) != INVALID_SOCKET) {
-        struct sockaddr_in addr;
-        addr.sin_family = AF_INET;
-        addr.sin_port = htons(m_nPort);
-        addr.sin_addr.s_addr = inet_addr(ip);
-        
-        if (connect(m_nSsockId, (struct sockaddr*)&addr, sizeof(addr)) != SOCKET_ERROR) {
-            m_pListener->OnOpen(this);
-            m_pListener->Start();
-        }else{
+    if (m_nSsockId != INVALID_SOCKET) {
+        if (InitInetAddr() != 1) {
+            //不等于1表示创建失败
             m_pListener->OnClose(this, false);
+        }else{
+            //特殊处理，UDP为无连接协议
+            if (m_eSockType == SOCK_UDP || m_eSockType == SOCK_UDP6) {
+//                goto UDP;
+            }
+            int connError;
+            extern int errno;
+            if ((connError = connect(m_nSsockId, (struct sockaddr*)&m_sSockAddr.addr, m_sSockAddr.len)) != SOCKET_ERROR) {
+//            UDP:
+                int bufSize = SOCKET_UDP_SIZE; //通常设置为32K
+                if (m_eSockType == SOCK_UDP || m_eSockType == SOCK_UDP6) {
+                    setsockopt(m_nSsockId, SOL_SOCKET, SO_SNDBUF, &bufSize, sizeof(bufSize));
+                    setsockopt(m_nSsockId, SOL_SOCKET, SO_RCVBUF, &bufSize, sizeof(bufSize));
+                }
+                
+                m_pListener->OnOpen(this);
+                m_pListener->Start();
+            }else{
+                printf("connect error code: %d\n",errno);
+                m_pListener->OnClose(this, false);
+            }
         }
     }else{
         m_pListener->OnClose(this, false);
     }
+}
+
+int MTJSocket::InitInetAddr(){
+    
+    void* s_addr = NULL;
+    if (m_eSockType == SOCK_TCP || m_eSockType == SOCK_UDP) {
+        m_sSockAddr.addr.inetv4.sin_family = AF_INET;
+        m_sSockAddr.addr.inetv4.sin_port = htons(m_nPort);
+        s_addr = &m_sSockAddr.addr.inetv4.sin_addr.s_addr;
+        m_sSockAddr.len = sizeof(m_sSockAddr.addr.inetv4);
+        //inet_pton为新的函数，支持IPV6，inet_addr比较老
+        if (inet_pton(AF_INET, m_pIP, s_addr)) {
+            return 1;
+        }
+    }else if(m_eSockType == SOCK_TCP6 || m_eSockType == SOCK_UDP6){
+        m_sSockAddr.addr.inetv6.sin6_family = AF_INET6;
+        m_sSockAddr.addr.inetv6.sin6_port = htons(m_nPort);
+        s_addr = &m_sSockAddr.addr.inetv6.sin6_addr.s6_addr;
+        m_sSockAddr.len = sizeof(m_sSockAddr.addr.inetv6);
+        if (inet_pton(AF_INET6, m_pIP, s_addr)) {
+            return 1;
+        }
+    }else if(m_eSockType == SOCK_UNIX_STREAM || m_eSockType == SOCK_UNIX_DGRAM){
+        printf("sorry unsupport SOCK_UNIX_STREAM or SOCK_UNIX_DGRAM\n");
+    }
+    
+    return -1;
 }
 
 int MTJSocket::Close(){
@@ -116,19 +169,29 @@ int MTJSocket::Close(){
 }
 
 int MTJSocket::Send(MTJSocketBuffer *frame){
-
+    
     char* content = frame->GetData();
     int bytes = 0;
     int count = 0;
     int len = frame->ReadableBytes();
-    while (count < len) {
-        bytes = (int)send(m_nSsockId, content + count, len - count, 0);
-        if (bytes == -1 || bytes == 0) {
-            return -1;
+    
+    if (m_eSockType == SOCK_TCP || m_eSockType == SOCK_TCP6) {
+        
+        while (count < len) {
+            bytes = (int)send(m_nSsockId, content + count, len - count, 0);
+            if (bytes == -1 || bytes == 0) {
+                return -1;
+            }
+            count += bytes;
+            frame->ReaderIndex(frame->ReaderIndex() + bytes);
         }
-        count += bytes;
-        frame->ReaderIndex(frame->ReaderIndex() + bytes);
+    }else if (m_eSockType == SOCK_UDP || m_eSockType == SOCK_UDP6){
+        extern int errno;
+        count = (int)sendto(m_nSsockId, content, len, 0, (struct sockaddr*)&m_sSockAddr.addr, m_sSockAddr.len);
+        printf("sendto error code: %d\n",errno);
     }
+
+
     
     return count;
 }

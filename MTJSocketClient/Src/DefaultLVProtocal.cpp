@@ -7,6 +7,7 @@
 //
 
 #include "DefaultLVProtocal.h"
+#include "MTJSocketPlatformConfig.h"
 #include <stddef.h>
 DefaultLVProtocal::DefaultLVProtocal():
 m_pFrame(NULL)
@@ -16,7 +17,8 @@ m_pFrame(NULL)
 }
 DefaultLVProtocal::~DefaultLVProtocal(){
 
-    delete m_pFrame;
+    MTJ_SAFE_DELETE(m_pFrame);
+
 }
 MTJSocketBuffer* DefaultLVProtocal::TranslateFrame(MTJSocketBuffer* pBytes){
 
@@ -28,18 +30,21 @@ MTJSocketBuffer* DefaultLVProtocal::TranslateFrame(MTJSocketBuffer* pBytes){
                 break;
             case 1:
                 m_nL = pBytes->ReadChar();
-                m_sLen = ((m_nH << 8) & 0x0000ff00) | (m_nL);
+                //此处注意大小端，注释掉的为大端
+#warning 注意大小端
+//                m_sLen = ((m_nH << 8) & 0x0000ff00) | (m_nL);
+                m_sLen = ((m_nL << 8) & 0x0000ff00) | (m_nH);
                 m_pFrame = new MTJSocketBuffer(m_sLen +2);
                 m_pFrame->WriteShort(m_sLen);
                 m_nStatus = 2;
                 break;
-            case 2:
+            case 2:{
                 m_pFrame->WriteBytes(pBytes);
                 if (m_pFrame->WritableBytes() <= 0) {
                     m_nStatus = 0;
                     return m_pFrame;
                 }
-                break;
+                break;}
             default:
                 break;
         }

@@ -20,6 +20,7 @@
 		F06EE3A31DACEF0B00CA80A5 /* DefaultLVProtocal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F06EE3A11DACEF0B00CA80A5 /* DefaultLVProtocal.cpp */; };
 		F06EE3A61DACF12700CA80A5 /* MTJSocketWorkThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F06EE3A41DACF12700CA80A5 /* MTJSocketWorkThread.cpp */; };
 		F06EE3A91DACF2CC00CA80A5 /* MTJSocketThreadPool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F06EE3A71DACF2CC00CA80A5 /* MTJSocketThreadPool.cpp */; };
+		F07D2ED01DAE478A005BCCE3 /* testUDPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F07D2ECE1DAE478A005BCCE3 /* testUDPServer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,6 +68,7 @@
 		F06EE3A51DACF12700CA80A5 /* MTJSocketWorkThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTJSocketWorkThread.h; sourceTree = "<group>"; };
 		F06EE3A71DACF2CC00CA80A5 /* MTJSocketThreadPool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MTJSocketThreadPool.cpp; sourceTree = "<group>"; };
 		F06EE3A81DACF2CC00CA80A5 /* MTJSocketThreadPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTJSocketThreadPool.h; sourceTree = "<group>"; };
+		F07D2ECE1DAE478A005BCCE3 /* testUDPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testUDPServer.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				F05D0FA51DAB8E0500BD8F1C /* Src */,
 				F05D0F9E1DAB8D6F00BD8F1C /* main.cpp */,
+				F07D2ECE1DAE478A005BCCE3 /* testUDPServer.cpp */,
 			);
 			path = MTJSocketClient;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				F06EE3931DACBF4B00CA80A5 /* MTJSocket.cpp in Sources */,
 				F05D0FAD1DAB93E600BD8F1C /* ThreadHelper.cpp in Sources */,
 				F06EE3A31DACEF0B00CA80A5 /* DefaultLVProtocal.cpp in Sources */,
+				F07D2ED01DAE478A005BCCE3 /* testUDPServer.cpp in Sources */,
 				F06EE3A01DACE32300CA80A5 /* DefaultListener.cpp in Sources */,
 				F06EE3961DACBF6800CA80A5 /* MTJSocketListener.cpp in Sources */,
 				F05D0F9F1DAB8D6F00BD8F1C /* main.cpp in Sources */,

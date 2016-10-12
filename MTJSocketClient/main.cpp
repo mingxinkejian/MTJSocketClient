@@ -24,26 +24,26 @@
 #include <winsock2.h>
 #endif
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n" << std::endl;
-    std::cout << sizeof(float) << std::endl;
-//    setlocale(LC_ALL,"zh_CN.UTF-8");
-    setlocale(LC_ALL, "Chinese-simplified");
-#ifdef WIN32
-    WSADATA wsaData;
-    WORD version = MAKEWORD(2, 0);
-    WSAStartup(version, &wsaData);
-#endif
-    //连接TCP服务器
-    MTJSocket* socket = new MTJSocket();
-    MTJSocketListener* sockListener = new DefaultListener();
-    //调用顺序，设定一个接受socket的回调
-    socket->SetListener(sockListener);
-    socket->SetProtocal(new DefaultLVProtocal());
-    socket->Open("127.0.0.1", 9501);
-    sockListener->Join(NULL);
-    socket->Close();
-    delete socket;
-    return 0;
-}
+//int main(int argc, const char * argv[]) {
+//    // insert code here...
+//    std::cout << "Hello, World!\n" ;
+//    std::cout << sizeof(float) << std::endl;
+////    setlocale(LC_ALL,"zh_CN.UTF-8");
+//    setlocale(LC_ALL, "Chinese-simplified");
+//#ifdef WIN32
+//    WSADATA wsaData;
+//    WORD version = MAKEWORD(2, 0);
+//    WSAStartup(version, &wsaData);
+//#endif
+//    //连接TCP服务器
+//    MTJSocket* socket = new MTJSocket();
+//    MTJSocketListener* sockListener = new DefaultListener();
+//    //调用顺序，设定一个接受socket的回调
+//    socket->SetProtocal(new DefaultLVProtocal());
+//    socket->Open(sockListener,MTJSocket::SOCK_UDP);
+//    socket->Connect("127.0.0.1",9501, 60);
+//    sockListener->Join(NULL);
+//    socket->Close();
+//    MTJ_SAFE_DELETE(socket);
+//    return 0;
+//}
