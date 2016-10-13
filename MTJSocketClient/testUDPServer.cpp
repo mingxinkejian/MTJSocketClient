@@ -26,11 +26,11 @@ int main(int argc,char* argv[]){
     int ret;
     struct sockaddr_in addr;
     struct sockaddr_in cltaddr;
-    char *buf= (char*)malloc(MAX_MSG_SIZE);
-    char *sndbuf=(char*)malloc(MAX_MSG_SIZE);
+    char *buf = (char*)malloc(MAX_MSG_SIZE);
+    char *sndbuf = (char*)malloc(MAX_MSG_SIZE);
     
     //创建数据报式套接字skfd
-    if(0>(skfd=socket(AF_INET,SOCK_DGRAM,0))){
+    if(0 > (skfd = socket(AF_INET,SOCK_DGRAM,0))){
         perror("Create Error");
         exit(1);
     }
@@ -41,14 +41,14 @@ int main(int argc,char* argv[]){
     addr.sin_port=htons(9501);
     
     //将socket文件描述符skfd和本地端口和地址绑定起来
-    if(0>(bind(skfd,(struct sockaddr*)&addr,sizeof(struct sockaddr_in)))){
+    if(0 > (bind(skfd,(struct sockaddr*)&addr,sizeof(struct sockaddr_in)))){
         perror("Bind Error");
         exit(1);
     }
     
     //开始收发数据
     while(true){
-        ret = recvfrom(skfd,buf,MAX_MSG_SIZE,0,(struct sockaddr*) &cltaddr,&addrlen);
+        ret = (int)recvfrom(skfd,buf,MAX_MSG_SIZE,0,(struct sockaddr*) &cltaddr,&addrlen);
         if(ret < 0){
             printf("recv data from %s:%d error!",inet_ntoa(cltaddr.sin_addr),ntohs(cltaddr.sin_port));
         }else if(ret == 0){
